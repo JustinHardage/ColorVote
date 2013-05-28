@@ -16,8 +16,9 @@ function SetVoteTotalByColor(event){
 		$(targetID).html(encodeURI(result)); 
 	}).fail(function(){ 
 		$(targetID).html("Request failed!");
+	}).always(function(){
+		$("#grandTotalResult").empty();
 	});
-		
 }
 
 $(document).ready(function(){

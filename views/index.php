@@ -31,7 +31,7 @@
 					foreach($results as $color)
 					{
 						$class = 'totalOnClick';
-						$name = $color->name;
+						$name = htmlspecialchars($color->name);
 						$target = $name . '_votes';
 						$tClass = 'votesByColor';
 						$row = '<tr><td>'
@@ -40,7 +40,7 @@
 						. "<td id=\"$target\" class=\"$tClass\"></td>"
 						. '</tr>';
 
-						echo htmlspecialchars($row);
+						echo $row;
 					}
 				?>
 				<tr>

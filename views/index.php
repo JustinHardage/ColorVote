@@ -40,7 +40,7 @@
 						. "<td id=\"$target\" class=\"$tClass\"></td>"
 						. '</tr>';
 
-						echo $row;
+						echo htmlspecialchars($row);
 					}
 				?>
 				<tr>

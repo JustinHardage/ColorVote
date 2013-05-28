@@ -6,7 +6,7 @@
 function SetGrandTotal(event){
 	var grandTotal = 0;
 	$('.votesByColor').each(function(){
-		var str = $(this).html();
+		var str = encodeURI($(this).html());
 		
 		if(str != null
 		&& str.length > 0

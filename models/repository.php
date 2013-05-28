@@ -33,6 +33,8 @@ class Repository
 
 	public function TotalVotesByColor($color)
 	{
+		//PDO automatically sanitizes data inserted into placeholders
+		//no need for old mysql_escape functions
 		$sql = 'SELECT SUM(votes) AS sum '
 			. 'FROM Votes '
 			. 'WHERE color = :color;';

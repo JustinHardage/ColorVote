@@ -63,7 +63,11 @@ td
 	padding: 0.5em;
 }
 
-.totalOnClick:hover	{ cursor: pointer; cursor: hand; }
+.totalOnClick:hover, #grandTotalBtn 
+{
+	cursor: pointer; 
+	cursor: hand; 
+}
 
 /**************************
 mockup

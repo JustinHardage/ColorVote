@@ -27,29 +27,39 @@
 					require_once('../models/repository.php');
 					$repo = new Repository(CVconfig::USERNAME, CVconfig::PASSWORD, CVconfig::DATABASE);
 					$results = $repo->FindAllColors();
+
+					$class = 'totalOnClick';
+					$targetSuffix = '_votes';	
+					$tClass = 'votesByColor';
+					$grandTotalBtnID = 'grandTotalBtn';
+					$grandTotalResultID = 'grandTotalResult';
 					
+
 					foreach($results as $color)
 					{
-						$class = 'totalOnClick';
 						$name = htmlspecialchars($color->name);
-						$target = $name . '_votes';
-						$tClass = 'votesByColor';
-						$row = '<tr><td>'
-						. "<a class=\"$class\" data-color=\"$name\" data-target=\"$target\">$name</a>"
-						. '</td>'
-						. "<td id=\"$target\" class=\"$tClass\"></td>"
-						. '</tr>';
+						$target = $name . $targetSuffix;
 
-						echo $row;
-					}
 				?>
 				<tr>
 					<td>
-						<a id="grandTotalBtn">Total:</a>
+						<a class="<?php echo $class ?>" data-color="<?php echo $name ?>" data-target="<?php echo $target ?>">
+							<?php echo $name ?>
+						</a>
+					</td>
+					<td id="<?php echo $target ?>" class="<?php echo $tClass ?>"></td>
+				</tr>
+				<?php 
+					} 
+				?>
+				<tr>
+					<td>
+						<a id="<?php echo $grandTotalBtnID ?>">Total:</a>
 					</td>
 					<td>
-						<span id="grandTotalResult"></span>
+						<span id="<?php echo $grandTotalResultID ?>"></span>
 					</td>
+				</tr>
 			</tbody>
 		</table>
 

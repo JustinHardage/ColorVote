@@ -40,6 +40,9 @@ class Repository
 			. 'WHERE color = :color;';
 		$statement = $this->db->prepare($sql);
 		$statement->execute(array(':color' => $color));
-		return $statement->fetch()['sum'] ?: 0;
+		$result = $statement->fetch(PDO::FETCH_ASSOC);
+
+		//empty check doesn't work here; aggregate functions always return a row
+		return $result && $result['sum'] ? $result['sum'] : 0;
 	}
-};
+}

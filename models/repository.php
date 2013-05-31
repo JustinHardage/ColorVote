@@ -4,6 +4,7 @@ require_once('color.php');
 
 class Repository
 {
+	const DEFAULT_VOTE_COUNT = 0;
 	private $db;
 
 	function __construct($USERNAME, $PASSWORD, $DATABASE)
@@ -43,6 +44,6 @@ class Repository
 		$result = $statement->fetch(PDO::FETCH_ASSOC);
 
 		//empty check doesn't work here; aggregate functions always return a row
-		return $result && $result['sum'] ? $result['sum'] : 0;
+		return $result && $result['sum'] ? $result['sum'] : Repository::DEFAULT_VOTE_COUNT;
 	}
 }
